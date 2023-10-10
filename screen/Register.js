@@ -1,113 +1,107 @@
 import React, { useState } from 'react'
 
-import { Dimensions, Text, KeyboardAvoidingView, ImageBackground } from 'react-native'
+import { Dimensions, Text, View,KeyboardAvoidingView, ImageBackground } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
-import styled from 'styled-components/native'
+import styled from 'styled-components/native';
+import { auth, db } from '../firebase';
 
 const Container = styled.ScrollView`
-	flex: 1;
-    background-color: #000;
-`
-
+  flex: 1;
+  background-color: #000;
+`;
 
 const FormWrapper = styled.View`
-    width: 100%;
-    justifyContent: center;
-    alignItems: center;
-    height: 80%;
-`
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+`;
 
 const Form = styled.View`
-height: 400px;
-    width: 90%;
-    background-color: black;
-    flex-direction: column;
-    border-radius: 20px;
-    padding: 20px;
-    justify-content: center;
-`
+  height: 400px;
+  width: 90%;
+  background-color: black;
+  flex-direction: column;
+  border-radius: 20px;
+  padding: 20px;
+  justify-content: center;
+`;
 
 const SubmitForm = styled.TouchableOpacity`
-    width: 95%;
-    height: 50px;
-    color: white;
-    border-radius: 10px;
-    border: none;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    background-color: #E7442E;
-`
+  width: 95%;
+  height: 50px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  background-color: #e7442e;
+`;
 
 const Input = styled.TextInput`
-    width: 95%;
-    height: 50px;
-    border: none;
-    padding: 10px;
-    border-radius: 15px;
-    background-color: #333333;
-    color: white;
-    margin-top: 10px;
-`
+  width: 95%;
+  height: 50px;
+  border-radius: 15px;
+  background-color: #333333;
+  color: white;
+  margin-top: 10px;
+  padding: 10px;
+`;
 
 const ButtonText = styled.Text`
-	font-size: 15px;
-	font-weight: bold;
-    padding-left: 5px;
-    color: white;
-`
+  font-size: 15px;
+  font-weight: bold;
+  padding-left: 5px;
+  color: white;
+`;
+
 const SignInText = styled.Text`
-font-size: 30px;
-font-weight: bold;
-color: white;
-margin: 10px;
-text-align: left;
-`
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  margin: 10px;
+  text-align: left;
+`;
 
 const NewToNetflixTextWrapper = styled.TouchableOpacity`
-    width: 100%;
-`
+  width: 100%;
+`;
 
 const NewToNetflix = styled.Text`
-font-size: 15px;
-font-weight: 500;
-text-align: center;
-color: #ccc;
-margin: 15px;
-text-align: center;
-`
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  color: #ccc;
+  margin: 15px;
+  text-align: center;
+`;
 
 const Overlay = styled.View`
-    background-color: 'rgba(0,0,0,0.5)';
-    flex: 1;
-`
+  background-color: rgba(0, 0, 0, 0.5);
+  flex: 1;
+`;
 
 const HalfInputWrapper = styled.View`
-    flex-direction:row;
-    justify-content: center;
-    align-items: center;
-`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
 
 const HalfInput = styled.TextInput`
-width: 45.8%;
-    height: 50px;
-    border: none;
-    padding: 10px;
-    border-radius: 15px;
-    background-color: #333333;
-    color: white;
-    margin-right: 5px;
-    margin-top: 10px;
-    &:focus {
-        background-color: #454545;
-    }   
-`
+  width: 45.8%;
+  height: 50px;
+  border-radius: 15px;
+  background-color: #333333;
+  color: white;
+  margin-right: 5px;
+  margin-top: 10px;
+  padding: 10px;
+`;
 
 const InputsWrapper = styled.View` 
     flex-direction: column;
     justify-content: center;
     align-items: center;
-`
+`;
 
 const Register = ({ navigation }) => {
 
