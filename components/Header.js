@@ -131,7 +131,11 @@ const Header = ({ login, goBack, label }) => {
 							<TouchableOpacity activeOpacity={0.5} onPress={signOutUser}>
 								<Avatar2 resizeMode='contain' source={{ uri: 'https://occ-0-4857-2164.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABTYctxxbe-UkKEdlMxXm4FVGD6DqTHkQ0TQ5CQJ9jbOMnG0CYxYcSICcTUQz8DrB7CpKUGpqJVMtEqksLlvSJx2ac3Ak.png?r=a41' }} />
 							</TouchableOpacity>
-						)
+						) : (
+								<TouchableOpacity activeOpacity={0.5} onPress={signOutUser}>
+									<Avatar resizeMode='contain' source={{ uri: 'https://occ-0-4857-2164.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABTYctxxbe-UkKEdlMxXm4FVGD6DqTHkQ0TQ5CQJ9jbOMnG0CYxYcSICcTUQz8DrB7CpKUGpqJVMtEqksLlvSJx2ac3Ak.png?r=a41' }} />
+								</TouchableOpacity>
+							)
 					}
 				</HeaderIcons>
 			</Container>

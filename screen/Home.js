@@ -4,9 +4,11 @@ import { StatusBar, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Header from '../components/Header';
-
 import { auth, db } from '../firebase';
 import firebase from 'firebase/compat/app';
+import HeaderTabs from '../components/HeaderTabs';
+import Hero from '../components/Hero';
+import Movies from '../components/Movies';
 
 const Container = styled.ScrollView`
 	flex: 1;
@@ -37,7 +39,7 @@ const Home = ({ navigation }) => {
 
   useLayoutEffect(() => {
 		const unsubscribe = db
-			.collection("movies")
+			.collection("movie")
 			.onSnapshot((snapshot) =>
 				setMovies(
 					snapshot.docs.map((doc) => ({
@@ -67,8 +69,19 @@ const Home = ({ navigation }) => {
             'rgba(0,0,0,1)'
           ]}>
           <Header login={true} navigation={navigation} />
+          <HeaderTabs />
+          <Hero user={user} />
         </Gradient>
       </Poster>
+      {
+        movies && (
+          <React.Fragment>
+            <Movies label='Phổ biến nhất' item={movies.filter(movie => movie.data && movie.data.tap && movie.data.tap.includes('Phổ biến nhất'))} />
+						<Movies label='Phim Mỹ' item={movies.filter(movie => movie.data && movie.data.tap && movie.data.tap.includes('Phim Mỹ'))} />
+						<Movies label='Bí ẩn' item={movies.filter(movie => movie.data && movie.data.tap && movie.data.tap.includes('Bí ẩn'))} />
+          </React.Fragment>
+        )
+      }
     </Container>
   </>
   )

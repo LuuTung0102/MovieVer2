@@ -9,6 +9,8 @@ import Register from './screen/Register';
 import Splash from './screen/Splash';
 import Login from './screen/Login'
 import Home from './screen/Home';
+import ViewMovie from './screen/ViewMovie';
+import ForgotPassword from './screen/ForgotPassword';
 import {AntDesign, MaterialIcons, Ionicons} from '@expo/vector-icons';
 import { SafeAreaViewProvider } from 'react-native-safe-area-context'
 
@@ -53,6 +55,7 @@ const App = () => {
           name="Mới nhất"
           component={Home}
           options={{
+            
             tabBarIcon: ({ color }) => (
               <MaterialIcons name="video-library" size={24} color={color} style={{ marginBottom: -10 }} />
             )
@@ -64,6 +67,15 @@ const App = () => {
           options={{
             tabBarIcon: ({ color }) => (
               <AntDesign name="download" size={24} color={color} style={{ marginBottom: -10 }} />
+            )
+          }}
+        />
+        <Tab.Screen
+          name="Tôi"
+          component={Home} 
+          options={{
+            tabBarIcon: ({ color }) => (
+              <Ionicons name="person" size={24} color={color} style={{ marginBottom: -10 }} />
             )
           }}
         />
@@ -92,6 +104,8 @@ const App = () => {
           }} />
           <Stack.Screen name="BottomStack" component={BottomStackScreen} />
           <Stack.Screen name="Splash" component={Splash} />
+          <Stack.Screen name="ViewMovie" component={ViewMovie} />
+          <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
         </Stack.Navigator>
       </KeyboardAvoidingView>
     </NavigationContainer>
