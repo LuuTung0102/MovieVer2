@@ -7,7 +7,6 @@ import Header from '../components/Header';
 import { auth, db } from '../firebase';
 import firebase from 'firebase/compat/app';
 import HeaderTabs from '../components/HeaderTabs';
-import Hero from '../components/Hero';
 import Movies from '../components/Movies';
 
 const Container = styled.ScrollView`
@@ -70,7 +69,6 @@ const Home = ({ navigation }) => {
           ]}>
           <Header login={true} navigation={navigation} />
           <HeaderTabs />
-          <Hero user={user} />
         </Gradient>
       </Poster>
       {
