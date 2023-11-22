@@ -12,6 +12,8 @@ import Home from './screen/Home';
 import ViewMovie from './screen/ViewMovie';
 import SearchScreen from './screen/SearchScreen';
 import ForgotPassword from './screen/ForgotPassword';
+import PaymentScreen from './screen/PaymentScreen';
+import History from './screen/History';
 import {AntDesign, MaterialIcons, Ionicons} from '@expo/vector-icons';
 import { SafeAreaViewProvider } from 'react-native-safe-area-context'
 import { LogBox } from 'react-native';
@@ -57,7 +59,7 @@ const App = () => {
         />
         <Tab.Screen
           name="Mới nhất"
-          component={Home}
+          component={PaymentScreen}
           options={{
             
             tabBarIcon: ({ color }) => (
@@ -67,7 +69,7 @@ const App = () => {
         />
         <Tab.Screen
           name="Tôi"
-          component={ForgotPassword} 
+          component={History} 
           options={{
             tabBarIcon: ({ color }) => (
               <Ionicons name="person" size={24} color={color} style={{ marginBottom: -10 }} />
@@ -102,6 +104,8 @@ const App = () => {
           <Stack.Screen name="ViewMovie" component={ViewMovie} />
           <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
           <Stack.Screen name="Search" component={SearchScreen} />
+          <Stack.Screen name="PaymentScreen" component={SearchScreen} />
+          <Stack.Screen name="History" component={History} />
         </Stack.Navigator>
       </KeyboardAvoidingView>
     </NavigationContainer>

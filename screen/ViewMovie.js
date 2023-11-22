@@ -5,7 +5,6 @@ import { useFonts, Montserrat_300Light, Montserrat_400Regular, Montserrat_700Bol
 import { Video } from 'expo-av';
 import { Ionicons, Feather, AntDesign } from '@expo/vector-icons';
 import { db, auth } from '../firebase';
-import Movies from '../components/Movies';
 import Header from '../components/Header'
 import firebase from 'firebase/compat/app';
 

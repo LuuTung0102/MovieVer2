@@ -113,17 +113,39 @@ const Login = ({ navigation }) => {
         }
 
         auth.signInWithEmailAndPassword(email, password)
-            .then(authUser => {
-                navigation.replace("BottomStack");
-                setPassword('');
-                setEmail("");
-                setLoading(false);
-            })
-            .catch(err => {
-                setLoading(false);
-                alert(err)
-            });
-    }
+        .then(authUser => {
+          
+            db.collection('users').doc(authUser.user.email).get()
+                .then(doc => {
+                    if (doc.exists) {
+                        const userData = doc.data();
+                        if (userData.isVip) {
+                            
+                            const currentTime = new Date();
+                            if (userData.isTime.toDate() < currentTime) {
+                            
+                                db.collection('users').doc(authUser.user.email).update({
+                                    isVip: false,
+                                    isTime: null
+                                });
+                            }
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.log("Error getting user data:", error);
+                });
+
+            navigation.replace("BottomStack");
+            setPassword('');
+            setEmail("");
+            setLoading(false);
+        })
+        .catch(err => {
+            setLoading(false);
+            alert(err);
+        });
+};
 
     return (
         <>

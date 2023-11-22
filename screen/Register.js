@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Dimensions, Text, View,KeyboardAvoidingView, ImageBackground } from 'react-native'
+import { Dimensions, Text, View, KeyboardAvoidingView, ImageBackground } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import styled from 'styled-components/native';
 import { auth, db } from '../firebase';
@@ -127,6 +127,8 @@ const Register = ({ navigation }) => {
                 lastName,
                 email,
                 list: [],
+                isVip: false,
+                isTime: null,
             }).then(() => {
                 navigation.replace("BottomStack");
                 setPassword('');
